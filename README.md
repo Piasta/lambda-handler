@@ -1,5 +1,6 @@
 # lambda-handler
 Zadanie 2.
+
 Zapoznaj się z dokumentacją czym jest funkcja Lambda na AWS:
 https://docs.aws.amazon.com/lambda/latest/dg/python-handler.html
 Utwórz analogicznie jak w powyższej dokumentacji, funkcję, która pobiera pliki .csv, następnie
