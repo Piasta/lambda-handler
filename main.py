@@ -1,6 +1,7 @@
 import json
 import csv
 import boto3
+import colorsys
 
 
 def handler_color(event, context):
@@ -18,9 +19,11 @@ def handler_color(event, context):
         reader = csv.DictReader(csv_content.splitlines())
         for row in reader:
             color_hex = row['value']
+            r, g, b = colorsys.hex_to_rgb(color_hex)
             color_data.append({
                 'name': row['color'],
                 'hex': color_hex,
+                'rgb': [r, g, b]
             })
 
     # Tworzymy plik json z danymi o kolorach i zapisujemy go do bucket'u
@@ -30,6 +33,6 @@ def handler_color(event, context):
     # Wyświetlamy dostępną paletę kolorów
     print('Dostępna paleta kolorów:')
     for color in color_data:
-        print(f'{color["name"]}: #{color["hex"]}')
+        print(f'{color["name"]}: #{color["hex"]} ({color["rgb"]})')
 
     return len(color_data)
